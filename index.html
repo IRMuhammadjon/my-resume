@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammadjon Rahmatullayev - Resume</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .resume-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #2c5aa0;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .name {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-bottom: 10px;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+        .contact-item {
+            color: #666;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c5aa0;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .summary {
+            text-align: justify;
+            line-height: 1.6;
+            color: #555;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+        .skill-item {
+            background: #f8f9fa;
+            padding: 8px 12px;
+            border-left: 3px solid #2c5aa0;
+            font-size: 0.9em;
+        }
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+            border-left: 3px solid #e0e0e0;
+            padding-left: 15px;
+        }
+        .job-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #2c5aa0;
+        }
+        .company {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .date {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .description {
+            color: #555;
+            line-height: 1.5;
+        }
+        .description ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .description li {
+            margin-bottom: 5px;
+        }
+        .current-job {
+            border-left: 3px solid #28a745;
+        }
+        .current-job .job-title {
+            color: #28a745;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            .resume-container {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="header">
+            <div class="name">Muhammadjon Rahmatullayev</div>
+            <div class="contact-info">
+                <div class="contact-item">📞 +998909534688</div>
+                <div class="contact-item">✉️ rahmatullayevmuhammadjon042@gmail.com</div>
+                <div class="contact-item">🔗 <a href="https://linkedin.com/in/muhammadjon-rahmatullayev-b9356a321" target="_blank" style="color: #2c5aa0; text-decoration: none;">linkedin.com/in/muhammadjon-rahmatullayev-b9356a321</a></div>
+                <div class="contact-item">💻 <a href="https://github.com/IRMuhammadjon" target="_blank" style="color: #2c5aa0; text-decoration: none;">github.com/IRMuhammadjon</a></div>
+                <div class="contact-item">📍 Mirzo Ulugbek, Toshkent, Uzbekistan</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Summary</div>
+            <div class="summary">
+                As a passionate and results-driven .NET Developer, I bring a strong background in developing robust and scalable software solutions. With expertise in C#, ASP.NET, SQL Server, and various related technologies, I am adept at creating high-performance web applications that address both client and user needs. I thrive in collaborative environments and am committed to delivering quality code through teamwork, problem-solving, and effective communication. Always eager to learn, I continuously strive to enhance my technical skills and stay up-to-date with the latest industry trends to provide innovative solutions.
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Key Competencies & Skills</div>
+            <div class="skills-grid">
+                <div class="skill-item">Object-oriented programming</div>
+                <div class="skill-item">.NET Framework & .NET Core</div>
+                <div class="skill-item">ASP.NET & ASP.NET Core</div>
+                <div class="skill-item">Version Control (Git, GitHub, GitLab)</div>
+                <div class="skill-item">Communication & Teamwork</div>
+                <div class="skill-item">Entity Framework & LINQ</div>
+                <div class="skill-item">Database Management</div>
+                <div class="skill-item">Unit Testing & Test-Driven Development (TDD)</div>
+                <div class="skill-item">Problem Solving & Debugging</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Professional Experience</div>
+            
+            <div class="experience-item current-job">
+                <div class="job-title">C# Developer</div>
+                <div class="company">Datamicron</div>
+                <div class="date">Feb 2025 - Present</div>
+                <div class="description">
+                    <ul>
+                        <li>Developing and maintaining enterprise-level applications using C# and .NET technologies</li>
+                        <li>Contributing to software architecture decisions and implementing best practices</li>
+                        <li>Collaborating with cross-functional teams to deliver high-quality software solutions</li>
+                        <li>Participating in code reviews and ensuring adherence to coding standards</li>
+                        <li>Working with modern development tools and methodologies to optimize development processes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-title">C# .Net Developer</div>
+                <div class="company">Fincube</div>
+                <div class="date">Jul 2024 - Mar 2025</div>
+                <div class="description">
+                    <ul>
+                        <li>Developed and maintained web applications using C# and .NET Framework, ensuring high performance and scalability</li>
+                        <li>Designed and implemented RESTful APIs to support seamless integration with third-party systems</li>
+                        <li>Optimized and debugged existing codebase to enhance application efficiency and reduce response times</li>
+                        <li>Collaborated with cross-functional teams to define, design, and ship new features within Agile development cycles</li>
+                        <li>Implemented security best practices, including authentication and authorization protocols</li>
+                        <li>Developed interactive Blazor UI components to create dynamic and responsive user interfaces, improving the overall user experience</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-title">Mentor</div>
+                <div class="company">Kid's Academy School</div>
+                <div class="date">Aug 2023 - Jun 2024</div>
+                <div class="description">
+                    <ul>
+                        <li>Provided personalized academic guidance and mentorship to students, fostering their growth and development</li>
+                        <li>Assisted in creating tailored learning plans to address individual student needs and enhance their performance</li>
+                        <li>Developed strategies and initiatives, including awareness campaigns and schedule optimization, to reduce late arrivals</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Education</div>
+            
+            <div class="education-item">
+                <div class="job-title">Bachelor's Degree in Software Engineering</div>
+                <div class="company">Tashkent University of Information Technologies</div>
+                <div class="date">2020 - 2024</div>
+                <div class="description">
+                    Received a government-funded scholarship to complete my undergraduate degree with a 93% academic performance. My coursework included core subjects and additional studies in Database Management, Cybersecurity, Algorithms, and other essential technological fields.
+                </div>
+            </div>
+
+            <div class="education-item">
+                <div class="job-title">C# .Net Bootcamp</div>
+                <div class="company">Ilmhub IT school</div>
+                <div class="description">
+                    Intensive bootcamp program focused on C# and .NET development, covering modern development practices and real-world application building.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
