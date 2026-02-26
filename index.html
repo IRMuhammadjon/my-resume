@@ -73,7 +73,7 @@
             border-left: 3px solid #2c5aa0;
             font-size: 0.9em;
         }
-        .experience-item, .education-item {
+        .experience-item, .education-item, .project-item {
             margin-bottom: 15px;
             border-left: 3px solid #e0e0e0;
             padding-left: 15px;
@@ -110,7 +110,35 @@
         .current-job .job-title {
             color: #28a745;
         }
-        
+        .project-item {
+            border-left: 3px solid #6f42c1;
+        }
+        .project-item .job-title {
+            color: #6f42c1;
+        }
+        .project-link {
+            color: #2c5aa0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .project-link:hover {
+            text-decoration: underline;
+        }
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+        .tech-tag {
+            background: #e8e0f0;
+            color: #6f42c1;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
         .download-btn {
             position: fixed;
             top: 20px;
@@ -127,13 +155,13 @@
             transition: all 0.3s ease;
             z-index: 1000;
         }
-        
+
         .download-btn:hover {
             background: #1e3f73;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(44, 90, 160, 0.4);
         }
-        
+
         @media print {
             .download-btn {
                 display: none;
@@ -155,16 +183,16 @@
     </script>
 </head>
 <body>
-    <button class="download-btn" onclick="downloadPDF()">📄 Download PDF</button>
+    <button class="download-btn" onclick="downloadPDF()">Download PDF</button>
     <div class="resume-container">
         <div class="header">
             <div class="name">Muhammadjon Rahmatullayev</div>
             <div class="contact-info">
-                <div class="contact-item">📞 +998909534688</div>
-                <div class="contact-item">✉️ rahmatullayevmuhammadjon042@gmail.com</div>
-                <div class="contact-item">🔗 <a href="https://linkedin.com/in/muhammadjon-rahmatullayev-b9356a321" target="_blank" style="color: #2c5aa0; text-decoration: none;">linkedin.com/in/muhammadjon-rahmatullayev-b9356a321</a></div>
-                <div class="contact-item">💻 <a href="https://github.com/IRMuhammadjon" target="_blank" style="color: #2c5aa0; text-decoration: none;">github.com/IRMuhammadjon</a></div>
-                <div class="contact-item">📍 Mirzo Ulugbek, Toshkent, Uzbekistan</div>
+                <div class="contact-item">+998909534688</div>
+                <div class="contact-item">rahmatullayevmuhammadjon042@gmail.com</div>
+                <div class="contact-item"><a href="https://linkedin.com/in/muhammadjon-rahmatullayev-b9356a321" target="_blank" style="color: #2c5aa0; text-decoration: none;">linkedin.com/in/muhammadjon-rahmatullayev</a></div>
+                <div class="contact-item"><a href="https://github.com/IRMuhammadjon" target="_blank" style="color: #2c5aa0; text-decoration: none;">github.com/IRMuhammadjon</a></div>
+                <div class="contact-item">Mirzo Ulugbek, Toshkent, Uzbekistan</div>
             </div>
         </div>
 
@@ -186,13 +214,53 @@
                 <div class="skill-item">Entity Framework & LINQ</div>
                 <div class="skill-item">Database Management</div>
                 <div class="skill-item">Unit Testing & Test-Driven Development (TDD)</div>
+                <div class="skill-item">React, TypeScript & Frontend Development</div>
                 <div class="skill-item">Problem Solving & Debugging</div>
             </div>
         </div>
 
         <div class="section">
+            <div class="section-title">Projects</div>
+
+            <div class="project-item">
+                <div class="job-title">CLR via C# — Uzbek Translation</div>
+                <div class="company"><a href="https://clr.net.uz/" target="_blank" class="project-link">clr.net.uz</a></div>
+                <div class="description">
+                    <ul>
+                        <li>Translated Jeffrey Richter's "CLR via C#" book into Uzbek language — a comprehensive 823-page resource covering .NET CLR fundamentals</li>
+                        <li>Organized 30 chapters across 5 major sections: CLR Fundamentals, Type Design, Essential Types, Core Capabilities, and Multithreading</li>
+                        <li>Made advanced .NET and CLR concepts accessible to Uzbek-speaking developers for the first time</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="job-title">SQL Teacher — Interactive SQL Learning Platform</div>
+                <div class="company"><a href="https://www.sqllearn.uz/" target="_blank" class="project-link">sqllearn.uz</a></div>
+                <div class="description">
+                    <ul>
+                        <li>Built a full-featured interactive SQL learning platform with 30+ progressive levels and real-time in-browser SQL execution</li>
+                        <li>Integrated CodeMirror-based SQL editor with syntax highlighting, and sql.js for client-side SQLite database execution</li>
+                        <li>Implemented multi-language support (Uzbek, Russian, English) with complete lesson localization</li>
+                        <li>Created sample databases (shop, school, library) for hands-on practice exercises</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Vite</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                        <span class="tech-tag">CodeMirror</span>
+                        <span class="tech-tag">sql.js</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Zustand</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
             <div class="section-title">Professional Experience</div>
-            
+
             <div class="experience-item current-job">
                 <div class="job-title">C# Developer</div>
                 <div class="company">Datamicron</div>
@@ -244,7 +312,7 @@
 
         <div class="section">
             <div class="section-title">Education</div>
-            
+
             <div class="education-item">
                 <div class="job-title">Bachelor's Degree in Software Engineering</div>
                 <div class="company">Tashkent University of Information Technologies</div>
