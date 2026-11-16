@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammadjon Rahmatullayev - Resume</title>
-    <meta name="description" content="Muhammadjon Rahmatullayev — .NET / C# developer from Tashkent. Founder of MySavdogar, co-founder of ENT Medical. Experience at Datamicron and Fincube.">
+    <meta name="description" content="Muhammadjon Rahmatullayev — AI-native .NET / C# developer from Tashkent. Founder of MySavdogar, co-founder of ENT Medical. Building enterprise data-integration software at Datamicron.">
     <meta name="author" content="Muhammadjon Rahmatullayev">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://muhammadjon.cv/">
@@ -94,6 +94,11 @@
         }
         .skills-list span::after { content: " \2022"; color: #2c5aa0; margin-left: 10px; }
         .skills-list span:last-child::after { content: ""; }
+        .skill-group { display: grid; grid-template-columns: 140px 1fr; gap: 2px 12px; margin-bottom: 3px; }
+        .skill-group .skills-list { row-gap: 1px; }
+        .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px 20px; }
+        .skill-label { font-weight: 600; color: #2c5aa0; }
+        .skill-group.ai .skill-label { color: #6f42c1; }
         .exp-row {
             display: flex;
             justify-content: space-between;
@@ -152,7 +157,8 @@
         @media (max-width: 640px) {
             body { padding: 0; }
             .resume-container { padding: 20px 16px; border-radius: 0; }
-            .two-col { grid-template-columns: 1fr; }
+            .two-col, .three-col { grid-template-columns: 1fr; }
+            .skill-group { grid-template-columns: 1fr; }
             .exp-row { flex-direction: column; }
             .contact-info { gap: 6px 14px; }
             .download-btn { top: auto; bottom: 15px; }
@@ -160,8 +166,11 @@
 
         @media print {
             .download-btn { display: none; }
-            body { background: white; padding: 0; }
-            .resume-container { box-shadow: none; padding: 20px 26px; }
+            body { background: white; padding: 0; font-size: 9.8pt; }
+            .section { margin-bottom: 11px; }
+            .header { padding-bottom: 10px; margin-bottom: 12px; }
+            .resume-container { box-shadow: none; padding: 0; max-width: none; }
+            @page { size: A4; margin: 12mm 14mm; }
         }
     </style>
     <script>function downloadPDF() { window.print(); }</script>
@@ -184,27 +193,17 @@
         <div class="section">
             <div class="section-title">Summary</div>
             <div class="summary">
-                Results-driven .NET Developer with expertise in C#, ASP.NET Core, SQL Server, and modern web technologies. Experienced in building scalable enterprise applications, RESTful APIs, and microservices. Strong background in Clean Architecture, Entity Framework, and cross-functional team collaboration. Hands-on experience shipping products end to end with AI coding tools, using them to move from idea to production faster without compromising code quality.
+                .NET / C# engineer building enterprise data-integration software at Datamicron; founder of MySavdogar and co-founder of ENT Medical. Full-stack: ASP.NET Core and Entity Framework, React and TypeScript, Docker in production. AI-native: I ship features from idea to production with agentic coding tools (Claude Code, Cursor, Codex), keeping code reviewed and tested, and build LLM features into real products.
             </div>
         </div>
 
         <div class="section">
             <div class="section-title">Skills</div>
-            <div class="skills-list">
-                <span>C# / .NET Core</span>
-                <span>ASP.NET Core</span>
-                <span>Entity Framework & LINQ</span>
-                <span>SQL Server</span>
-                <span>RESTful APIs</span>
-                <span>Microservices</span>
-                <span>Git / GitHub</span>
-                <span>React & TypeScript</span>
-                <span>Blazor</span>
-                <span>Clean Architecture</span>
-                <span>Unit Testing / TDD</span>
-                <span>AI-Assisted Development (Claude Code, Cursor)</span>
-                <span>Prompt Engineering & LLM Integration</span>
-            </div>
+            <div class="skill-group"><span class="skill-label">Backend</span><div class="skills-list"><span>C# / .NET</span><span>ASP.NET Core</span><span>EF & LINQ</span><span>REST APIs</span><span>Microservices</span><span>Node.js / Fastify</span></div></div>
+            <div class="skill-group"><span class="skill-label">Data</span><div class="skills-list"><span>SQL Server</span><span>PostgreSQL</span><span>ETL / Data Integration</span><span>Impala & Hive</span></div></div>
+            <div class="skill-group"><span class="skill-label">Frontend</span><div class="skills-list"><span>React & TypeScript</span><span>Blazor</span><span>Offline-first PWA</span></div></div>
+            <div class="skill-group"><span class="skill-label">DevOps & Practices</span><div class="skills-list"><span>Docker</span><span>GitLab CI</span><span>Nginx / Caddy</span><span>Clean Architecture</span><span>Unit Testing / TDD</span></div></div>
+            <div class="skill-group ai"><span class="skill-label">AI Engineering</span><div class="skills-list"><span>Claude Code, Cursor, Codex</span><span>Claude API</span><span>Prompt & context engineering</span><span>MCP & agents</span></div></div>
         </div>
 
         <div class="section">
@@ -217,10 +216,31 @@
                 </div>
                 <div class="description">
                     <ul>
-                        <li>Building enterprise applications with C#/.NET, processing large-scale datasets with statistical analysis</li>
-                        <li>Developing microservices in distributed architecture, integrating external APIs and models</li>
-                        <li>Applying Clean Architecture and Database-First approach with Entity Framework</li>
+                        <li>Core developer on EzData, an enterprise ETL platform (visual Control Flow / Data Flow designer, job orchestration, bulk loads) — 100+ merged commits</li>
+                        <li>Shipped data-driven job triggering, bulk actions, process export/import, and per-batch load logging</li>
+                        <li>Added Cloudera Impala and Hive connectivity (ODBC drivers in Docker runtime images, Impala auth)</li>
                     </ul>
+                </div>
+            </div>
+
+            <div class="experience-item current">
+                <div class="exp-row">
+                    <div><span class="job-title">Founder</span> — <span class="company">MySavdogar</span> · <a href="https://mysavdogar.uz" target="_blank" class="project-link">mysavdogar.uz</a><span class="current-tag">Current</span></div>
+                    <div class="date">Oct 2026 – Present</div>
+                </div>
+                <div class="description">
+                    <ul>
+                        <li>Sales and profit tracking app for market shops: offline-first PWA that syncs later, Telegram reports, and an in-app AI assistant on the Claude API</li>
+                        <li>Built end to end with AI-assisted development: API, web app, SEO, Docker deployment, backups</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Fastify</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Claude API</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
                 </div>
             </div>
 
@@ -231,8 +251,7 @@
                 </div>
                 <div class="description">
                     <ul>
-                        <li>Developed high-performance web apps and RESTful APIs with .NET Framework in Agile environment</li>
-                        <li>Built interactive Blazor UI components, implemented authentication and security best practices</li>
+                        <li>Developed web apps and RESTful APIs with .NET in an Agile team; built Blazor UI components and authentication</li>
                     </ul>
                 </div>
             </div>
@@ -242,48 +261,35 @@
                     <div><span class="job-title">Mentor</span> — <span class="company">Kid's Academy School</span></div>
                     <div class="date">Aug 2023 – Jun 2024</div>
                 </div>
-                <div class="description">
-                    <ul>
-                        <li>Provided personalized academic mentorship, created tailored learning plans for students</li>
-                    </ul>
-                </div>
             </div>
         </div>
 
         <div class="section">
             <div class="section-title">Projects</div>
-            <div class="two-col">
-                <div class="project-item">
-                    <div><span class="job-title" style="color:#6f42c1;">MySavdogar — Founder</span></div>
-                    <a href="https://mysavdogar.uz" target="_blank" class="project-link">mysavdogar.uz</a>
-                    <div class="description">
-                        Founded a sales and profit tracking app for market shops, with offline sales recording and Telegram reports.
-                    </div>
-                </div>
+            <div class="three-col">
                 <div class="project-item">
                     <div><span class="job-title" style="color:#6f42c1;">ENT Medical — Co-Founder</span></div>
                     <a href="https://entmedical.uz" target="_blank" class="project-link">entmedical.uz</a>
                     <div class="description">
-                        Co-founded a clinical knowledge platform for ENT (otolaryngology) doctors in Uzbek, Russian and English: study topics, treatment standards, pharmacology, a library and qualification tests.
+                        Clinical knowledge platform for ENT doctors (UZ/RU/EN): standards, pharmacology, tests.
                     </div>
                 </div>
                 <div class="project-item">
                     <div><span class="job-title" style="color:#6f42c1;">CLR via C# — Uzbek Translation</span></div>
                     <a href="https://clr.net.uz/" target="_blank" class="project-link">clr.net.uz</a>
                     <div class="description">
-                        Translated Jeffrey Richter's "CLR via C#" (823 pages, 30 chapters) into Uzbek — making advanced .NET/CLR concepts accessible to Uzbek developers for the first time.
+                        Translated Jeffrey Richter's "CLR via C#" (823 pages, 30 chapters) into Uzbek for the first time.
                     </div>
                 </div>
                 <div class="project-item">
-                    <div><span class="job-title" style="color:#6f42c1;">SQL Teacher — SQL Learning Platform</span></div>
+                    <div><span class="job-title" style="color:#6f42c1;">SQL Teacher</span></div>
                     <a href="https://www.sqllearn.uz/" target="_blank" class="project-link">sqllearn.uz</a>
                     <div class="description">
-                        Interactive SQL learning platform with 30+ levels, in-browser SQL execution, multi-language support (UZ/RU/EN), and sample databases.
+                        Interactive SQL learning platform: 30+ levels, in-browser SQL execution, UZ/RU/EN.
                     </div>
                     <div class="tech-tags">
                         <span class="tech-tag">React</span>
                         <span class="tech-tag">TypeScript</span>
-                        <span class="tech-tag">Tailwind CSS</span>
                         <span class="tech-tag">sql.js</span>
                         <span class="tech-tag">Firebase</span>
                     </div>
@@ -292,18 +298,21 @@
         </div>
 
         <div class="section">
-            <div class="section-title">Education</div>
-            <div class="two-col">
+            <div class="section-title">Education & Languages</div>
+            <div class="three-col">
                 <div class="education-item">
                     <div class="job-title">BSc Software Engineering</div>
-                    <div class="company">Tashkent University of Information Technologies</div>
-                    <div class="date">2020 – 2024</div>
-                    <div class="description">Government-funded scholarship, 93% academic performance.</div>
+                    <div class="company">Tashkent University of IT</div>
+                    <div class="description"><span class="date">2020 – 2024</span> · State scholarship, 93% avg.</div>
                 </div>
                 <div class="education-item">
                     <div class="job-title">C# .NET Bootcamp</div>
                     <div class="company">Ilmhub IT School</div>
-                    <div class="description">Intensive program covering modern .NET development practices.</div>
+                    <div class="description">Intensive modern .NET program</div>
+                </div>
+                <div class="education-item">
+                    <div class="job-title">Languages</div>
+                    <div class="description">Uzbek — Native<br>English — Professional working</div>
                 </div>
             </div>
         </div>
