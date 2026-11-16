@@ -149,6 +149,15 @@
         }
         .download-btn:hover { background: #1e3f73; transform: translateY(-2px); }
 
+        @media (max-width: 640px) {
+            body { padding: 0; }
+            .resume-container { padding: 20px 16px; border-radius: 0; }
+            .two-col { grid-template-columns: 1fr; }
+            .exp-row { flex-direction: column; }
+            .contact-info { gap: 6px 14px; }
+            .download-btn { top: auto; bottom: 15px; }
+        }
+
         @media print {
             .download-btn { display: none; }
             body { background: white; padding: 0; }
@@ -164,11 +173,11 @@
         <div class="header">
             <div class="name">Muhammadjon Rahmatullayev</div>
             <div class="contact-info">
-                <span>+998909534688</span>
-                <span>rahmatullayevmuhammadjon042@gmail.com</span>
+                <span><a href="tel:+998909534688">+998 90 953 46 88</a></span>
+                <span><a href="mailto:rahmatullayevmuhammadjon042@gmail.com">rahmatullayevmuhammadjon042@gmail.com</a></span>
                 <span><a href="https://linkedin.com/in/muhammadjon-rahmatullayev-b9356a321" target="_blank">LinkedIn</a></span>
                 <span><a href="https://github.com/IRMuhammadjon" target="_blank">GitHub</a></span>
-                <span>Toshkent, Uzbekistan</span>
+                <span>Tashkent, Uzbekistan</span>
             </div>
         </div>
 
