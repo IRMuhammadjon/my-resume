@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uz">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -235,12 +235,12 @@
     <div class="toolbar">
         <div class="lang-tabs" role="tablist" aria-label="Language">
             <span class="lang-indicator" aria-hidden="true"></span>
-            <button class="lang-tab" role="tab" data-lang="uz" aria-selected="true" title="O'zbekcha">UZ</button>
+            <button class="lang-tab" role="tab" data-lang="uz" aria-selected="false" title="O'zbekcha">UZ</button>
             <button class="lang-tab" role="tab" data-lang="ru" aria-selected="false" title="Русский">RU</button>
-            <button class="lang-tab" role="tab" data-lang="en" aria-selected="false" title="English">EN</button>
+            <button class="lang-tab" role="tab" data-lang="en" aria-selected="true" title="English">EN</button>
         </div>
         <span class="toolbar-sep" aria-hidden="true"></span>
-        <button class="download-btn" id="download-btn" onclick="window.print()" title="PDF yuklab olish" aria-label="PDF yuklab olish">
+        <button class="download-btn" id="download-btn" onclick="window.print()" title="Download PDF" aria-label="Download PDF">
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v8M4.5 7.5 8 11l3.5-3.5M3 13.5h10"/></svg>
             <span>PDF</span>
         </button>
@@ -249,7 +249,7 @@
     <div class="resume-container">
 
         <!-- ============ O'ZBEKCHA ============ -->
-        <div class="lang-pane" data-lang="uz" lang="uz">
+        <div class="lang-pane" data-lang="uz" lang="uz" hidden>
             <div class="header">
                 <div class="name">Muhammadjon Rahmatullayev</div>
                 <div class="contact-info">
@@ -519,7 +519,7 @@
         </div>
 
         <!-- ============ ENGLISH ============ -->
-        <div class="lang-pane" data-lang="en" lang="en" hidden>
+        <div class="lang-pane" data-lang="en" lang="en">
             <div class="header">
                 <div class="name">Muhammadjon Rahmatullayev</div>
                 <div class="contact-info">
@@ -670,7 +670,7 @@
             }
 
             function setLang(lang, updateUrl) {
-                if (!BTN[lang]) lang = 'uz';
+                if (!BTN[lang]) lang = 'en';
                 var changed = current !== null && current !== lang;
                 current = lang;
                 panes.forEach(function (p) {
@@ -687,7 +687,6 @@
                 document.documentElement.lang = lang;
                 btn.title = BTN[lang];
                 btn.setAttribute('aria-label', BTN[lang]);
-                try { localStorage.setItem('resume-lang', lang); } catch (e) {}
                 if (updateUrl && history.replaceState) history.replaceState(null, '', '#' + lang);
             }
 
@@ -696,9 +695,7 @@
             });
 
             var fromHash = location.hash.replace('#', '');
-            var saved = null;
-            try { saved = localStorage.getItem('resume-lang'); } catch (e) {}
-            setLang(BTN[fromHash] ? fromHash : (saved || 'uz'), false);
+            setLang(BTN[fromHash] ? fromHash : 'en', false);
 
             if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () {
                 var on = document.querySelector('.lang-tab[aria-selected="true"]');
