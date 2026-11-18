@@ -147,55 +147,82 @@
         }
         .project-item .job-title { color: #6f42c1; }
 
-        .lang-tabs {
-            display: flex;
-            width: fit-content;
-            margin: 0 auto 12px;
+        /* ---- floating toolbar: language + PDF ---- */
+        :root { --ease-soft: cubic-bezier(0.22, 1, 0.36, 1); --ink: #2c5aa0; }
+        .toolbar {
+            position: fixed; top: 14px; right: 14px; z-index: 1000;
+            display: flex; align-items: center; gap: 4px;
             padding: 4px;
-            gap: 2px;
-            background: white;
+            background: rgba(255,255,255,0.78);
+            -webkit-backdrop-filter: saturate(1.6) blur(12px);
+            backdrop-filter: saturate(1.6) blur(12px);
+            border: 1px solid rgba(44,90,160,0.12);
             border-radius: 999px;
-            box-shadow: 0 0 12px rgba(0,0,0,0.08);
+            box-shadow: 0 6px 24px -8px rgba(30,63,115,0.28), 0 1px 2px rgba(30,63,115,0.08);
+            font-family: inherit;
+            animation: toolbar-in 0.9s var(--ease-soft) both;
+        }
+        @keyframes toolbar-in { from { opacity: 0; transform: translateY(-8px) scale(0.96); } }
+        .lang-tabs { position: relative; display: flex; }
+        .lang-indicator {
+            position: absolute; top: 0; left: 0; height: 100%; width: 0;
+            background: var(--ink);
+            border-radius: 999px;
+            box-shadow: 0 2px 8px -2px rgba(44,90,160,0.55);
+            transition: transform 0.55s var(--ease-soft), width 0.55s var(--ease-soft);
         }
         .lang-tab {
-            border: none;
-            background: none;
-            padding: 6px 16px;
+            position: relative; z-index: 1;
+            border: none; background: none; cursor: pointer;
+            min-width: 34px; height: 28px; padding: 0 9px;
             border-radius: 999px;
-            font: inherit;
-            font-size: 13px;
-            font-weight: 600;
-            color: #2c5aa0;
-            cursor: pointer;
-            transition: background 0.2s ease, color 0.2s ease;
+            font: 700 11.5px/1 'Segoe UI', Tahoma, sans-serif;
+            letter-spacing: 0.06em;
+            color: #5b6b82;
+            transition: color 0.35s var(--ease-soft);
         }
-        .lang-tab:hover { background: #eef3fa; }
-        .lang-tab[aria-selected="true"] { background: #2c5aa0; color: white; }
-        .lang-tab:focus-visible { outline: 2px solid #2c5aa0; outline-offset: 2px; }
-
+        .lang-tab:hover { color: var(--ink); }
+        .lang-tab[aria-selected="true"] { color: #fff; }
+        .toolbar-sep { width: 1px; height: 16px; background: rgba(44,90,160,0.16); margin: 0 2px; }
         .download-btn {
-            position: fixed; top: 15px; right: 15px;
-            background: #2c5aa0; color: white;
-            padding: 10px 18px; border: none; border-radius: 25px;
-            cursor: pointer; font-size: 13px; font-weight: bold;
-            box-shadow: 0 4px 15px rgba(44,90,160,0.3);
-            transition: all 0.3s ease; z-index: 1000;
+            display: inline-flex; align-items: center; gap: 5px;
+            height: 28px; padding: 0 11px 0 9px;
+            border: none; border-radius: 999px; cursor: pointer;
+            background: transparent; color: var(--ink);
+            font: 700 11.5px/1 'Segoe UI', Tahoma, sans-serif; letter-spacing: 0.06em;
+            transition: background 0.35s var(--ease-soft), color 0.35s var(--ease-soft);
         }
-        .download-btn:hover { background: #1e3f73; transform: translateY(-2px); }
+        .download-btn svg { width: 14px; height: 14px; transition: transform 0.5s var(--ease-soft); }
+        .download-btn:hover { background: rgba(44,90,160,0.09); }
+        .download-btn:hover svg { transform: translateY(2px); }
+        .download-btn:active svg { transform: translateY(4px); }
+        .lang-tab:focus-visible, .download-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+        /* soft language change */
+        .lang-pane.entering { animation: pane-in 0.5s var(--ease-soft) both; }
+        @keyframes pane-in { from { opacity: 0; transform: translateY(6px); filter: blur(3px); } }
+
+        @media (prefers-reduced-motion: reduce) {
+            .toolbar, .lang-pane.entering { animation: none; }
+            .lang-indicator, .lang-tab, .download-btn, .download-btn svg { transition: none; }
+        }
+
+        @media (min-width: 641px) and (max-width: 1240px) {
+            body { padding-top: 60px; }
+        }
 
         @media (max-width: 640px) {
-            body { padding: 0; }
-            .lang-tabs { margin: 10px auto; }
+            body { padding: 0 0 64px; }
+            .toolbar { top: auto; bottom: 14px; right: 50%; transform: translateX(50%); animation: none; }
             .resume-container { padding: 20px 16px; border-radius: 0; }
             .three-col { grid-template-columns: 1fr; }
             .skill-group { grid-template-columns: 1fr; }
             .exp-row { flex-direction: column; }
             .contact-info { gap: 6px 14px; }
-            .download-btn { top: auto; bottom: 15px; }
         }
 
         @media print {
-            .download-btn, .lang-tabs { display: none; }
+            .toolbar { display: none; }
             body { background: white; padding: 0; font-size: 9.8pt; }
             .section { margin-bottom: 11px; }
             .header { padding-bottom: 10px; margin-bottom: 12px; }
@@ -205,12 +232,18 @@
     </style>
 </head>
 <body>
-    <button class="download-btn" id="download-btn" onclick="window.print()">PDF yuklab olish</button>
-
-    <div class="lang-tabs" role="tablist" aria-label="Language">
-        <button class="lang-tab" role="tab" data-lang="uz" aria-selected="true">O'zbekcha</button>
-        <button class="lang-tab" role="tab" data-lang="ru" aria-selected="false">Русский</button>
-        <button class="lang-tab" role="tab" data-lang="en" aria-selected="false">English</button>
+    <div class="toolbar">
+        <div class="lang-tabs" role="tablist" aria-label="Language">
+            <span class="lang-indicator" aria-hidden="true"></span>
+            <button class="lang-tab" role="tab" data-lang="uz" aria-selected="true" title="O'zbekcha">UZ</button>
+            <button class="lang-tab" role="tab" data-lang="ru" aria-selected="false" title="Русский">RU</button>
+            <button class="lang-tab" role="tab" data-lang="en" aria-selected="false" title="English">EN</button>
+        </div>
+        <span class="toolbar-sep" aria-hidden="true"></span>
+        <button class="download-btn" id="download-btn" onclick="window.print()" title="PDF yuklab olish" aria-label="PDF yuklab olish">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v8M4.5 7.5 8 11l3.5-3.5M3 13.5h10"/></svg>
+            <span>PDF</span>
+        </button>
     </div>
 
     <div class="resume-container">
@@ -627,13 +660,33 @@
             var BTN = { uz: 'PDF yuklab olish', ru: 'Скачать PDF', en: 'Download PDF' };
             var tabs = document.querySelectorAll('.lang-tab');
             var panes = document.querySelectorAll('.lang-pane');
+            var indicator = document.querySelector('.lang-indicator');
+            var btn = document.getElementById('download-btn');
+            var current = null;
+
+            function moveIndicator(tab) {
+                indicator.style.width = tab.offsetWidth + 'px';
+                indicator.style.transform = 'translateX(' + tab.offsetLeft + 'px)';
+            }
 
             function setLang(lang, updateUrl) {
                 if (!BTN[lang]) lang = 'uz';
-                panes.forEach(function (p) { p.hidden = p.dataset.lang !== lang; });
-                tabs.forEach(function (t) { t.setAttribute('aria-selected', String(t.dataset.lang === lang)); });
+                var changed = current !== null && current !== lang;
+                current = lang;
+                panes.forEach(function (p) {
+                    var show = p.dataset.lang === lang;
+                    p.hidden = !show;
+                    p.classList.remove('entering');
+                    if (show && changed) { void p.offsetWidth; p.classList.add('entering'); }
+                });
+                tabs.forEach(function (t) {
+                    var on = t.dataset.lang === lang;
+                    t.setAttribute('aria-selected', String(on));
+                    if (on) moveIndicator(t);
+                });
                 document.documentElement.lang = lang;
-                document.getElementById('download-btn').textContent = BTN[lang];
+                btn.title = BTN[lang];
+                btn.setAttribute('aria-label', BTN[lang]);
                 try { localStorage.setItem('resume-lang', lang); } catch (e) {}
                 if (updateUrl && history.replaceState) history.replaceState(null, '', '#' + lang);
             }
@@ -646,6 +699,11 @@
             var saved = null;
             try { saved = localStorage.getItem('resume-lang'); } catch (e) {}
             setLang(BTN[fromHash] ? fromHash : (saved || 'uz'), false);
+
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () {
+                var on = document.querySelector('.lang-tab[aria-selected="true"]');
+                if (on) moveIndicator(on);
+            });
 
             window.addEventListener('hashchange', function () {
                 var h = location.hash.replace('#', '');
