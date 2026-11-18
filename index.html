@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +23,7 @@
       "worksFor": { "@type": "Organization", "name": "Datamicron" },
       "address": { "@type": "PostalAddress", "addressLocality": "Tashkent", "addressCountry": "UZ" },
       "alumniOf": "Tashkent University of Information Technologies",
+      "knowsLanguage": ["uz", "en"],
       "sameAs": [
         "https://linkedin.com/in/muhammadjon-rahmatullayev-b9356a321",
         "https://github.com/IRMuhammadjon",
@@ -49,6 +50,7 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
             border-radius: 8px;
         }
+        .lang-pane[hidden] { display: none; }
         .header {
             text-align: center;
             border-bottom: 3px solid #2c5aa0;
@@ -94,7 +96,7 @@
         }
         .skills-list span::after { content: " \2022"; color: #2c5aa0; margin-left: 10px; }
         .skills-list span:last-child::after { content: ""; }
-        .skill-group { display: grid; grid-template-columns: 140px 1fr; gap: 2px 12px; margin-bottom: 3px; }
+        .skill-group { display: grid; grid-template-columns: 150px 1fr; gap: 2px 12px; margin-bottom: 3px; }
         .skill-group .skills-list { row-gap: 1px; }
         .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px 20px; }
         .skill-label { font-weight: 600; color: #2c5aa0; }
@@ -107,7 +109,7 @@
         }
         .job-title { font-weight: bold; color: #2c5aa0; }
         .company { font-weight: 600; color: #333; }
-        .date { color: #666; font-style: italic; font-size: 0.9em; }
+        .date { color: #666; font-style: italic; font-size: 0.9em; white-space: nowrap; }
         .description { color: #555; line-height: 1.35; }
         .description ul { margin: 4px 0; padding-left: 18px; }
         .description li { margin-bottom: 3px; }
@@ -138,11 +140,37 @@
             font-size: 0.78em;
             font-weight: 500;
         }
-        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px; }
         .project-item {
             border-left: 3px solid #6f42c1;
             padding-left: 12px;
         }
+        .project-item .job-title { color: #6f42c1; }
+
+        .lang-tabs {
+            display: flex;
+            width: fit-content;
+            margin: 0 auto 12px;
+            padding: 4px;
+            gap: 2px;
+            background: white;
+            border-radius: 999px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.08);
+        }
+        .lang-tab {
+            border: none;
+            background: none;
+            padding: 6px 16px;
+            border-radius: 999px;
+            font: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            color: #2c5aa0;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        .lang-tab:hover { background: #eef3fa; }
+        .lang-tab[aria-selected="true"] { background: #2c5aa0; color: white; }
+        .lang-tab:focus-visible { outline: 2px solid #2c5aa0; outline-offset: 2px; }
 
         .download-btn {
             position: fixed; top: 15px; right: 15px;
@@ -156,8 +184,9 @@
 
         @media (max-width: 640px) {
             body { padding: 0; }
+            .lang-tabs { margin: 10px auto; }
             .resume-container { padding: 20px 16px; border-radius: 0; }
-            .two-col, .three-col { grid-template-columns: 1fr; }
+            .three-col { grid-template-columns: 1fr; }
             .skill-group { grid-template-columns: 1fr; }
             .exp-row { flex-direction: column; }
             .contact-info { gap: 6px 14px; }
@@ -165,7 +194,7 @@
         }
 
         @media print {
-            .download-btn { display: none; }
+            .download-btn, .lang-tabs { display: none; }
             body { background: white; padding: 0; font-size: 9.8pt; }
             .section { margin-bottom: 11px; }
             .header { padding-bottom: 10px; margin-bottom: 12px; }
@@ -173,150 +202,455 @@
             @page { size: A4; margin: 12mm 14mm; }
         }
     </style>
-    <script>function downloadPDF() { window.print(); }</script>
 </head>
 <body>
-    <button class="download-btn" onclick="downloadPDF()">Download PDF</button>
+    <button class="download-btn" id="download-btn" onclick="window.print()">PDF yuklab olish</button>
+
+    <div class="lang-tabs" role="tablist" aria-label="Language">
+        <button class="lang-tab" role="tab" data-lang="uz" aria-selected="true">O'zbekcha</button>
+        <button class="lang-tab" role="tab" data-lang="ru" aria-selected="false">Русский</button>
+        <button class="lang-tab" role="tab" data-lang="en" aria-selected="false">English</button>
+    </div>
+
     <div class="resume-container">
 
-        <div class="header">
-            <div class="name">Muhammadjon Rahmatullayev</div>
-            <div class="contact-info">
-                <span><a href="tel:+998909534688">+998 90 953 46 88</a></span>
-                <span><a href="mailto:rahmatullayevmuhammadjon042@gmail.com">rahmatullayevmuhammadjon042@gmail.com</a></span>
-                <span><a href="https://linkedin.com/in/muhammadjon-rahmatullayev-b9356a321" target="_blank">LinkedIn</a></span>
-                <span><a href="https://github.com/IRMuhammadjon" target="_blank">GitHub</a></span>
-                <span>Tashkent, Uzbekistan</span>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Summary</div>
-            <div class="summary">
-                .NET / C# engineer building enterprise data-integration software at Datamicron; founder of MySavdogar and co-founder of ENT Medical. Full-stack: ASP.NET Core and Entity Framework, React and TypeScript, Docker in production. AI-native: I ship features from idea to production with agentic coding tools (Claude Code, Cursor, Codex), keeping code reviewed and tested, and build LLM features into real products.
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Skills</div>
-            <div class="skill-group"><span class="skill-label">Backend</span><div class="skills-list"><span>C# / .NET</span><span>ASP.NET Core</span><span>EF & LINQ</span><span>REST APIs</span><span>Microservices</span><span>Node.js / Fastify</span></div></div>
-            <div class="skill-group"><span class="skill-label">Data</span><div class="skills-list"><span>SQL Server</span><span>PostgreSQL</span><span>ETL / Data Integration</span><span>Impala & Hive</span></div></div>
-            <div class="skill-group"><span class="skill-label">Frontend</span><div class="skills-list"><span>React & TypeScript</span><span>Blazor</span><span>Offline-first PWA</span></div></div>
-            <div class="skill-group"><span class="skill-label">DevOps & Practices</span><div class="skills-list"><span>Docker</span><span>GitLab CI</span><span>Nginx / Caddy</span><span>Clean Architecture</span><span>Unit Testing / TDD</span></div></div>
-            <div class="skill-group ai"><span class="skill-label">AI Engineering</span><div class="skills-list"><span>Claude Code, Cursor, Codex</span><span>Claude API</span><span>Prompt & context engineering</span><span>MCP & agents</span></div></div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Experience</div>
-
-            <div class="experience-item current">
-                <div class="exp-row">
-                    <div><span class="job-title">C# Developer</span> — <span class="company">Datamicron</span><span class="current-tag">Current</span></div>
-                    <div class="date">Feb 2025 – Present</div>
-                </div>
-                <div class="description">
-                    <ul>
-                        <li>Core developer on EzData, an enterprise ETL platform (visual Control Flow / Data Flow designer, job orchestration, bulk loads) — 100+ merged commits</li>
-                        <li>Shipped data-driven job triggering, bulk actions, process export/import, and per-batch load logging</li>
-                        <li>Added Cloudera Impala and Hive connectivity (ODBC drivers in Docker runtime images, Impala auth)</li>
-                    </ul>
+        <!-- ============ O'ZBEKCHA ============ -->
+        <div class="lang-pane" data-lang="uz" lang="uz">
+            <div class="header">
+                <div class="name">Muhammadjon Rahmatullayev</div>
+                <div class="contact-info">
+                    <span><a href="tel:+998909534688">+998 90 953 46 88</a></span>
+                    <span><a href="mailto:rahmatullayevmuhammadjon042@gmail.com">rahmatullayevmuhammadjon042@gmail.com</a></span>
+                    <span><a href="https://linkedin.com/in/muhammadjon-rahmatullayev-b9356a321" target="_blank">LinkedIn</a></span>
+                    <span><a href="https://github.com/IRMuhammadjon" target="_blank">GitHub</a></span>
+                    <span>Toshkent, O'zbekiston</span>
                 </div>
             </div>
 
-            <div class="experience-item current">
-                <div class="exp-row">
-                    <div><span class="job-title">Founder</span> — <span class="company">MySavdogar</span> · <a href="https://mysavdogar.uz" target="_blank" class="project-link">mysavdogar.uz</a><span class="current-tag">Current</span></div>
-                    <div class="date">Oct 2026 – Present</div>
+            <div class="section">
+                <div class="section-title">Men haqimda</div>
+                <div class="summary">
+                    .NET / C# dasturchi: Datamicron'da korporativ ma'lumotlar integratsiyasi dasturlarini yarataman; MySavdogar asoschisi va ENT Medical hammuassisi. Full-stack: ASP.NET Core va Entity Framework, React va TypeScript, production'da Docker. AI-native: agentli dasturlash vositalari (Claude Code, Cursor, Codex) bilan funksiyalarni g'oyadan production'gacha tez yetkazaman, kod review va testlarni saqlagan holda, va real mahsulotlarga LLM imkoniyatlarini joriy qilaman.
                 </div>
-                <div class="description">
-                    <ul>
-                        <li>Sales and profit tracking app for market shops: offline-first PWA that syncs later, Telegram reports, and an in-app AI assistant on the Claude API</li>
-                        <li>Built end to end with AI-assisted development: API, web app, SEO, Docker deployment, backups</li>
-                    </ul>
-                    <div class="tech-tags">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">TypeScript</span>
-                        <span class="tech-tag">Fastify</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">Claude API</span>
-                        <span class="tech-tag">Docker</span>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Ko'nikmalar</div>
+                <div class="skill-group"><span class="skill-label">Backend</span><div class="skills-list"><span>C# / .NET</span><span>ASP.NET Core</span><span>EF & LINQ</span><span>REST API</span><span>Mikroservislar</span><span>Node.js / Fastify</span></div></div>
+                <div class="skill-group"><span class="skill-label">Ma'lumotlar</span><div class="skills-list"><span>SQL Server</span><span>PostgreSQL</span><span>ETL / ma'lumotlar integratsiyasi</span><span>Impala & Hive</span></div></div>
+                <div class="skill-group"><span class="skill-label">Frontend</span><div class="skills-list"><span>React & TypeScript</span><span>Blazor</span><span>Offline-first PWA</span></div></div>
+                <div class="skill-group"><span class="skill-label">DevOps va amaliyot</span><div class="skills-list"><span>Docker</span><span>GitLab CI</span><span>Nginx / Caddy</span><span>Clean Architecture</span><span>Unit Testing / TDD</span></div></div>
+                <div class="skill-group ai"><span class="skill-label">AI muhandisligi</span><div class="skills-list"><span>Claude Code, Cursor, Codex</span><span>Claude API</span><span>Prompt va kontekst muhandisligi</span><span>MCP va agentlar</span></div></div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Ish tajribasi</div>
+
+                <div class="experience-item current">
+                    <div class="exp-row">
+                        <div><span class="job-title">C# dasturchi</span> — <span class="company">Datamicron</span><span class="current-tag">Hozir</span></div>
+                        <div class="date">Fev 2025 – hozirgacha</div>
                     </div>
-                </div>
-            </div>
-
-            <div class="experience-item">
-                <div class="exp-row">
-                    <div><span class="job-title">C# .NET Developer</span> — <span class="company">Fincube</span></div>
-                    <div class="date">Jul 2024 – Mar 2025</div>
-                </div>
-                <div class="description">
-                    <ul>
-                        <li>Developed web apps and RESTful APIs with .NET in an Agile team; built Blazor UI components and authentication</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="experience-item">
-                <div class="exp-row">
-                    <div><span class="job-title">Mentor</span> — <span class="company">Kid's Academy School</span></div>
-                    <div class="date">Aug 2023 – Jun 2024</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Projects</div>
-            <div class="three-col">
-                <div class="project-item">
-                    <div><span class="job-title" style="color:#6f42c1;">ENT Medical — Co-Founder</span></div>
-                    <a href="https://entmedical.uz" target="_blank" class="project-link">entmedical.uz</a>
                     <div class="description">
-                        Clinical knowledge platform for ENT doctors (UZ/RU/EN): standards, pharmacology, tests.
+                        <ul>
+                            <li>EzData korporativ ETL platformasining asosiy dasturchisi (vizual Control Flow / Data Flow dizayneri, job orkestratsiyasi, ommaviy yuklash) — 100+ commit</li>
+                            <li>Ma'lumot tayyor bo'lganda job'ni ishga tushirish, ommaviy amallar, eksport/import va batch loglarini qo'shdim</li>
+                            <li>Cloudera Impala va Hive ulanishini qo'shdim (Docker image'larida ODBC drayverlar, Impala autentifikatsiyasi)</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="project-item">
-                    <div><span class="job-title" style="color:#6f42c1;">CLR via C# — Uzbek Translation</span></div>
-                    <a href="https://clr.net.uz/" target="_blank" class="project-link">clr.net.uz</a>
+
+                <div class="experience-item current">
+                    <div class="exp-row">
+                        <div><span class="job-title">Asoschi</span> — <span class="company">MySavdogar</span> · <a href="https://mysavdogar.uz" target="_blank" class="project-link">mysavdogar.uz</a><span class="current-tag">Hozir</span></div>
+                        <div class="date">Okt 2026 – hozirgacha</div>
+                    </div>
                     <div class="description">
-                        Translated Jeffrey Richter's "CLR via C#" (823 pages, 30 chapters) into Uzbek for the first time.
+                        <ul>
+                            <li>Do'konlar uchun savdo va foyda hisobi: offline PWA, Telegram hisobotlar, Claude API'dagi AI yordamchi</li>
+                            <li>AI yordamida boshidan oxirigacha qurdim: API, veb-ilova, SEO, Docker'da deploy, zaxira nusxalar</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Fastify</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Claude API</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-item">
-                    <div><span class="job-title" style="color:#6f42c1;">SQL Teacher</span></div>
-                    <a href="https://www.sqllearn.uz/" target="_blank" class="project-link">sqllearn.uz</a>
-                    <div class="description">
-                        Interactive SQL learning platform: 30+ levels, in-browser SQL execution, UZ/RU/EN.
+
+                <div class="experience-item">
+                    <div class="exp-row">
+                        <div><span class="job-title">C# .NET dasturchi</span> — <span class="company">Fincube</span></div>
+                        <div class="date">Iyul 2024 – Mart 2025</div>
                     </div>
-                    <div class="tech-tags">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">TypeScript</span>
-                        <span class="tech-tag">sql.js</span>
-                        <span class="tech-tag">Firebase</span>
+                    <div class="description">
+                        <ul>
+                            <li>Agile jamoada .NET'da veb-ilovalar, REST API, Blazor UI va autentifikatsiya ishlab chiqdim</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-row">
+                        <div><span class="job-title">Mentor</span> — <span class="company">Kid's Academy School</span></div>
+                        <div class="date">Avg 2023 – Iyun 2024</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Loyihalar</div>
+                <div class="three-col">
+                    <div class="project-item">
+                        <div><span class="job-title">ENT Medical — hammuassis</span></div>
+                        <a href="https://entmedical.uz" target="_blank" class="project-link">entmedical.uz</a>
+                        <div class="description">LOR shifokorlari uchun klinik bilim platformasi (UZ/RU/EN): standartlar, farmakologiya, testlar.</div>
+                    </div>
+                    <div class="project-item">
+                        <div><span class="job-title">CLR via C# — o'zbekcha tarjima</span></div>
+                        <a href="https://clr.net.uz/" target="_blank" class="project-link">clr.net.uz</a>
+                        <div class="description">Jeffrey Richterning «CLR via C#» kitobini (823 bet, 30 bob) ilk bor o'zbek tiliga tarjima qildim.</div>
+                    </div>
+                    <div class="project-item">
+                        <div><span class="job-title">SQL Teacher</span></div>
+                        <a href="https://www.sqllearn.uz/" target="_blank" class="project-link">sqllearn.uz</a>
+                        <div class="description">Interaktiv SQL o'rganish platformasi: 30+ daraja, brauzerda SQL bajarish, UZ/RU/EN.</div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">sql.js</span>
+                            <span class="tech-tag">Firebase</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Ta'lim va tillar</div>
+                <div class="three-col">
+                    <div class="education-item">
+                        <div class="job-title">Bakalavr, dasturiy injiniring</div>
+                        <div class="company">Toshkent axborot texnologiyalari universiteti</div>
+                        <div class="description"><span class="date">2020 – 2024</span> · Davlat granti, 93%</div>
+                    </div>
+                    <div class="education-item">
+                        <div class="job-title">C# .NET bootcamp</div>
+                        <div class="company">Ilmhub IT School</div>
+                        <div class="description">Intensiv .NET kursi</div>
+                    </div>
+                    <div class="education-item">
+                        <div class="job-title">Tillar</div>
+                        <div class="description">O'zbek — ona tili<br>Ingliz — professional daraja</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="section">
-            <div class="section-title">Education & Languages</div>
-            <div class="three-col">
-                <div class="education-item">
-                    <div class="job-title">BSc Software Engineering</div>
-                    <div class="company">Tashkent University of IT</div>
-                    <div class="description"><span class="date">2020 – 2024</span> · State scholarship, 93% avg.</div>
+        <!-- ============ РУССКИЙ ============ -->
+        <div class="lang-pane" data-lang="ru" lang="ru" hidden>
+            <div class="header">
+                <div class="name">Muhammadjon Rahmatullayev</div>
+                <div class="contact-info">
+                    <span><a href="tel:+998909534688">+998 90 953 46 88</a></span>
+                    <span><a href="mailto:rahmatullayevmuhammadjon042@gmail.com">rahmatullayevmuhammadjon042@gmail.com</a></span>
+                    <span><a href="https://linkedin.com/in/muhammadjon-rahmatullayev-b9356a321" target="_blank">LinkedIn</a></span>
+                    <span><a href="https://github.com/IRMuhammadjon" target="_blank">GitHub</a></span>
+                    <span>Ташкент, Узбекистан</span>
                 </div>
-                <div class="education-item">
-                    <div class="job-title">C# .NET Bootcamp</div>
-                    <div class="company">Ilmhub IT School</div>
-                    <div class="description">Intensive modern .NET program</div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">О себе</div>
+                <div class="summary">
+                    .NET / C# разработчик: создаю корпоративное ПО для интеграции данных в Datamicron; основатель MySavdogar и сооснователь ENT Medical. Full-stack: ASP.NET Core и Entity Framework, React и TypeScript, Docker в продакшене. AI-native: с помощью агентных инструментов (Claude Code, Cursor, Codex) быстро довожу задачи от идеи до продакшена, сохраняя код-ревью и тесты, и встраиваю LLM-функции в реальные продукты.
                 </div>
-                <div class="education-item">
-                    <div class="job-title">Languages</div>
-                    <div class="description">Uzbek — Native<br>English — Professional working</div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Навыки</div>
+                <div class="skill-group"><span class="skill-label">Backend</span><div class="skills-list"><span>C# / .NET</span><span>ASP.NET Core</span><span>EF & LINQ</span><span>REST API</span><span>Микросервисы</span><span>Node.js / Fastify</span></div></div>
+                <div class="skill-group"><span class="skill-label">Данные</span><div class="skills-list"><span>SQL Server</span><span>PostgreSQL</span><span>ETL / интеграция данных</span><span>Impala & Hive</span></div></div>
+                <div class="skill-group"><span class="skill-label">Frontend</span><div class="skills-list"><span>React & TypeScript</span><span>Blazor</span><span>Offline-first PWA</span></div></div>
+                <div class="skill-group"><span class="skill-label">DevOps и практики</span><div class="skills-list"><span>Docker</span><span>GitLab CI</span><span>Nginx / Caddy</span><span>Clean Architecture</span><span>Unit Testing / TDD</span></div></div>
+                <div class="skill-group ai"><span class="skill-label">AI-инженерия</span><div class="skills-list"><span>Claude Code, Cursor, Codex</span><span>Claude API</span><span>Промпт- и контекст-инжиниринг</span><span>MCP и агенты</span></div></div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Опыт работы</div>
+
+                <div class="experience-item current">
+                    <div class="exp-row">
+                        <div><span class="job-title">C# разработчик</span> — <span class="company">Datamicron</span><span class="current-tag">Сейчас</span></div>
+                        <div class="date">Фев 2025 – н.в.</div>
+                    </div>
+                    <div class="description">
+                        <ul>
+                            <li>Ключевой разработчик EzData — корпоративной ETL-платформы (визуальный дизайнер Control Flow / Data Flow, оркестрация задач, массовая загрузка) — 100+ коммитов</li>
+                            <li>Реализовал запуск задач по готовности данных, массовые операции, экспорт/импорт и логи загрузки</li>
+                            <li>Добавил подключение к Cloudera Impala и Hive (ODBC-драйверы в Docker-образах, аутентификация Impala)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item current">
+                    <div class="exp-row">
+                        <div><span class="job-title">Основатель</span> — <span class="company">MySavdogar</span> · <a href="https://mysavdogar.uz" target="_blank" class="project-link">mysavdogar.uz</a><span class="current-tag">Сейчас</span></div>
+                        <div class="date">Окт 2026 – н.в.</div>
+                    </div>
+                    <div class="description">
+                        <ul>
+                            <li>Учёт продаж и прибыли для магазинов: offline-first PWA, отчёты в Telegram, AI-ассистент на Claude API</li>
+                            <li>Разработал с нуля с помощью AI: API, веб-приложение, SEO, деплой в Docker, резервное копирование</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Fastify</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Claude API</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-row">
+                        <div><span class="job-title">C# .NET разработчик</span> — <span class="company">Fincube</span></div>
+                        <div class="date">Июл 2024 – Мар 2025</div>
+                    </div>
+                    <div class="description">
+                        <ul>
+                            <li>Веб-приложения и REST API на .NET в Agile-команде; UI на Blazor и аутентификация</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-row">
+                        <div><span class="job-title">Ментор</span> — <span class="company">Kid's Academy School</span></div>
+                        <div class="date">Авг 2023 – Июн 2024</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Проекты</div>
+                <div class="three-col">
+                    <div class="project-item">
+                        <div><span class="job-title">ENT Medical — сооснователь</span></div>
+                        <a href="https://entmedical.uz" target="_blank" class="project-link">entmedical.uz</a>
+                        <div class="description">Платформа клинических знаний для ЛОР-врачей (UZ/RU/EN): стандарты, фармакология, тесты.</div>
+                    </div>
+                    <div class="project-item">
+                        <div><span class="job-title">CLR via C# — перевод</span></div>
+                        <a href="https://clr.net.uz/" target="_blank" class="project-link">clr.net.uz</a>
+                        <div class="description">Впервые перевёл «CLR via C#» Джеффри Рихтера (823 стр., 30 глав) на узбекский.</div>
+                    </div>
+                    <div class="project-item">
+                        <div><span class="job-title">SQL Teacher</span></div>
+                        <a href="https://www.sqllearn.uz/" target="_blank" class="project-link">sqllearn.uz</a>
+                        <div class="description">Интерактивная платформа для изучения SQL: 30+ уровней, SQL в браузере, UZ/RU/EN.</div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">sql.js</span>
+                            <span class="tech-tag">Firebase</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Образование и языки</div>
+                <div class="three-col">
+                    <div class="education-item">
+                        <div class="job-title">Бакалавр, программная инженерия</div>
+                        <div class="company">Ташкентский университет информационных технологий</div>
+                        <div class="description"><span class="date">2020 – 2024</span> · Госгрант, 93%</div>
+                    </div>
+                    <div class="education-item">
+                        <div class="job-title">Буткемп C# .NET</div>
+                        <div class="company">Ilmhub IT School</div>
+                        <div class="description">Интенсивный курс .NET</div>
+                    </div>
+                    <div class="education-item">
+                        <div class="job-title">Языки</div>
+                        <div class="description">Узбекский — родной<br>Английский — профессиональный</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ ENGLISH ============ -->
+        <div class="lang-pane" data-lang="en" lang="en" hidden>
+            <div class="header">
+                <div class="name">Muhammadjon Rahmatullayev</div>
+                <div class="contact-info">
+                    <span><a href="tel:+998909534688">+998 90 953 46 88</a></span>
+                    <span><a href="mailto:rahmatullayevmuhammadjon042@gmail.com">rahmatullayevmuhammadjon042@gmail.com</a></span>
+                    <span><a href="https://linkedin.com/in/muhammadjon-rahmatullayev-b9356a321" target="_blank">LinkedIn</a></span>
+                    <span><a href="https://github.com/IRMuhammadjon" target="_blank">GitHub</a></span>
+                    <span>Tashkent, Uzbekistan</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Summary</div>
+                <div class="summary">
+                    .NET / C# engineer building enterprise data-integration software at Datamicron; founder of MySavdogar and co-founder of ENT Medical. Full-stack: ASP.NET Core and Entity Framework, React and TypeScript, Docker in production. AI-native: I ship features from idea to production with agentic coding tools (Claude Code, Cursor, Codex), keeping code reviewed and tested, and build LLM features into real products.
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Skills</div>
+                <div class="skill-group"><span class="skill-label">Backend</span><div class="skills-list"><span>C# / .NET</span><span>ASP.NET Core</span><span>EF & LINQ</span><span>REST APIs</span><span>Microservices</span><span>Node.js / Fastify</span></div></div>
+                <div class="skill-group"><span class="skill-label">Data</span><div class="skills-list"><span>SQL Server</span><span>PostgreSQL</span><span>ETL / Data Integration</span><span>Impala & Hive</span></div></div>
+                <div class="skill-group"><span class="skill-label">Frontend</span><div class="skills-list"><span>React & TypeScript</span><span>Blazor</span><span>Offline-first PWA</span></div></div>
+                <div class="skill-group"><span class="skill-label">DevOps & Practices</span><div class="skills-list"><span>Docker</span><span>GitLab CI</span><span>Nginx / Caddy</span><span>Clean Architecture</span><span>Unit Testing / TDD</span></div></div>
+                <div class="skill-group ai"><span class="skill-label">AI Engineering</span><div class="skills-list"><span>Claude Code, Cursor, Codex</span><span>Claude API</span><span>Prompt & context engineering</span><span>MCP & agents</span></div></div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Experience</div>
+
+                <div class="experience-item current">
+                    <div class="exp-row">
+                        <div><span class="job-title">C# Developer</span> — <span class="company">Datamicron</span><span class="current-tag">Current</span></div>
+                        <div class="date">Feb 2025 – Present</div>
+                    </div>
+                    <div class="description">
+                        <ul>
+                            <li>Core developer on EzData, an enterprise ETL platform (visual Control Flow / Data Flow designer, job orchestration, bulk loads) — 100+ merged commits</li>
+                            <li>Shipped data-driven job triggering, bulk actions, process export/import, and per-batch load logging</li>
+                            <li>Added Cloudera Impala and Hive connectivity (ODBC drivers in Docker runtime images, Impala auth)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item current">
+                    <div class="exp-row">
+                        <div><span class="job-title">Founder</span> — <span class="company">MySavdogar</span> · <a href="https://mysavdogar.uz" target="_blank" class="project-link">mysavdogar.uz</a><span class="current-tag">Current</span></div>
+                        <div class="date">Oct 2026 – Present</div>
+                    </div>
+                    <div class="description">
+                        <ul>
+                            <li>Sales and profit tracking app for market shops: offline-first PWA that syncs later, Telegram reports, and an in-app AI assistant on the Claude API</li>
+                            <li>Built end to end with AI-assisted development: API, web app, SEO, Docker deployment, backups</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Fastify</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Claude API</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-row">
+                        <div><span class="job-title">C# .NET Developer</span> — <span class="company">Fincube</span></div>
+                        <div class="date">Jul 2024 – Mar 2025</div>
+                    </div>
+                    <div class="description">
+                        <ul>
+                            <li>Developed web apps and RESTful APIs with .NET in an Agile team; built Blazor UI components and authentication</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-row">
+                        <div><span class="job-title">Mentor</span> — <span class="company">Kid's Academy School</span></div>
+                        <div class="date">Aug 2023 – Jun 2024</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Projects</div>
+                <div class="three-col">
+                    <div class="project-item">
+                        <div><span class="job-title">ENT Medical — Co-Founder</span></div>
+                        <a href="https://entmedical.uz" target="_blank" class="project-link">entmedical.uz</a>
+                        <div class="description">Clinical knowledge platform for ENT doctors (UZ/RU/EN): standards, pharmacology, tests.</div>
+                    </div>
+                    <div class="project-item">
+                        <div><span class="job-title">CLR via C# — Uzbek Translation</span></div>
+                        <a href="https://clr.net.uz/" target="_blank" class="project-link">clr.net.uz</a>
+                        <div class="description">Translated Jeffrey Richter's "CLR via C#" (823 pages, 30 chapters) into Uzbek for the first time.</div>
+                    </div>
+                    <div class="project-item">
+                        <div><span class="job-title">SQL Teacher</span></div>
+                        <a href="https://www.sqllearn.uz/" target="_blank" class="project-link">sqllearn.uz</a>
+                        <div class="description">Interactive SQL learning platform: 30+ levels, in-browser SQL execution, UZ/RU/EN.</div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">sql.js</span>
+                            <span class="tech-tag">Firebase</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Education & Languages</div>
+                <div class="three-col">
+                    <div class="education-item">
+                        <div class="job-title">BSc Software Engineering</div>
+                        <div class="company">Tashkent University of IT</div>
+                        <div class="description"><span class="date">2020 – 2024</span> · State scholarship, 93% avg.</div>
+                    </div>
+                    <div class="education-item">
+                        <div class="job-title">C# .NET Bootcamp</div>
+                        <div class="company">Ilmhub IT School</div>
+                        <div class="description">Intensive modern .NET program</div>
+                    </div>
+                    <div class="education-item">
+                        <div class="job-title">Languages</div>
+                        <div class="description">Uzbek — Native<br>English — Professional working</div>
+                    </div>
                 </div>
             </div>
         </div>
 
     </div>
+
+    <script>
+        (function () {
+            var BTN = { uz: 'PDF yuklab olish', ru: 'Скачать PDF', en: 'Download PDF' };
+            var tabs = document.querySelectorAll('.lang-tab');
+            var panes = document.querySelectorAll('.lang-pane');
+
+            function setLang(lang, updateUrl) {
+                if (!BTN[lang]) lang = 'uz';
+                panes.forEach(function (p) { p.hidden = p.dataset.lang !== lang; });
+                tabs.forEach(function (t) { t.setAttribute('aria-selected', String(t.dataset.lang === lang)); });
+                document.documentElement.lang = lang;
+                document.getElementById('download-btn').textContent = BTN[lang];
+                try { localStorage.setItem('resume-lang', lang); } catch (e) {}
+                if (updateUrl && history.replaceState) history.replaceState(null, '', '#' + lang);
+            }
+
+            tabs.forEach(function (t) {
+                t.addEventListener('click', function () { setLang(t.dataset.lang, true); });
+            });
+
+            var fromHash = location.hash.replace('#', '');
+            var saved = null;
+            try { saved = localStorage.getItem('resume-lang'); } catch (e) {}
+            setLang(BTN[fromHash] ? fromHash : (saved || 'uz'), false);
+
+            window.addEventListener('hashchange', function () {
+                var h = location.hash.replace('#', '');
+                if (BTN[h]) setLang(h, false);
+            });
+        })();
+    </script>
 </body>
 </html>
