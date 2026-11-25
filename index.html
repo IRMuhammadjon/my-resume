@@ -99,6 +99,7 @@
         .skills-list span:last-child::after { content: ""; }
         .skill-group { display: grid; grid-template-columns: 150px 1fr; gap: 2px 12px; margin-bottom: 3px; }
         .skill-group .skills-list { row-gap: 1px; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px; }
         .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px 20px; }
         .skill-label { font-weight: 600; color: #2c5aa0; }
         .skill-group.ai .skill-label { color: #6f42c1; }
@@ -217,7 +218,7 @@
             body { padding: 0 0 64px; }
             .toolbar { top: auto; bottom: 14px; right: 50%; transform: translateX(50%); animation: none; }
             .resume-container { padding: 20px 16px; border-radius: 0; }
-            .three-col { grid-template-columns: 1fr; }
+            .two-col, .three-col { grid-template-columns: 1fr; }
             .skill-group { grid-template-columns: 1fr; }
             .exp-row { flex-direction: column; }
             .contact-info { gap: 6px 14px; }
@@ -225,11 +226,15 @@
 
         @media print {
             .toolbar { display: none; }
-            body { background: white; padding: 0; font-size: 9.8pt; }
-            .section { margin-bottom: 11px; }
+            body { background: white; padding: 0; font-size: 9.6pt; }
+            .section { margin-bottom: 8px; }
+            .section-title { margin-bottom: 6px; }
+            .experience-item { margin-bottom: 8px; }
+            .education-item, .project-item { margin-bottom: 4px; }
+            .tech-tags { margin-top: 3px; }
             .header { padding-bottom: 10px; margin-bottom: 12px; }
             .resume-container { box-shadow: none; padding: 0; max-width: none; }
-            @page { size: A4; margin: 12mm 14mm; }
+            @page { size: A4; margin: 10mm 14mm; }
         }
     </style>
 </head>
@@ -339,7 +344,12 @@
 
             <div class="section">
                 <div class="section-title">Loyihalar</div>
-                <div class="three-col">
+                <div class="two-col">
+                    <div class="project-item">
+                        <div><span class="job-title">MyGaraj — asoschi</span></div>
+                        <a href="https://mygaraj.uz" target="_blank" class="project-link">mygaraj.uz</a>
+                        <div class="description">Avtoservislar uchun SaaS: zakaz-naryad, ombor, ustalar oyligi, QR avto-pasport, Telegram hisobot.</div>
+                    </div>
                     <div class="project-item">
                         <div><span class="job-title">ENT Medical — hammuassis</span></div>
                         <a href="https://entmedical.uz" target="_blank" class="project-link">entmedical.uz</a>
@@ -474,7 +484,12 @@
 
             <div class="section">
                 <div class="section-title">Проекты</div>
-                <div class="three-col">
+                <div class="two-col">
+                    <div class="project-item">
+                        <div><span class="job-title">MyGaraj — основатель</span></div>
+                        <a href="https://mygaraj.uz" target="_blank" class="project-link">mygaraj.uz</a>
+                        <div class="description">SaaS для автосервисов: заказ-наряды, склад, зарплата мастеров, QR-паспорт авто, отчёты в Telegram.</div>
+                    </div>
                     <div class="project-item">
                         <div><span class="job-title">ENT Medical — сооснователь</span></div>
                         <a href="https://entmedical.uz" target="_blank" class="project-link">entmedical.uz</a>
@@ -609,7 +624,12 @@
 
             <div class="section">
                 <div class="section-title">Projects</div>
-                <div class="three-col">
+                <div class="two-col">
+                    <div class="project-item">
+                        <div><span class="job-title">MyGaraj — Founder</span></div>
+                        <a href="https://mygaraj.uz" target="_blank" class="project-link">mygaraj.uz</a>
+                        <div class="description">SaaS for auto service shops: work orders, inventory, mechanic payroll, QR car passport, Telegram reports.</div>
+                    </div>
                     <div class="project-item">
                         <div><span class="job-title">ENT Medical — Co-Founder</span></div>
                         <a href="https://entmedical.uz" target="_blank" class="project-link">entmedical.uz</a>
